@@ -32,6 +32,12 @@ if($og_seo == true):?>
         .hide-robot {
             display: none;
         }
+    /* eliminate horizontal scrollbars */
+    @media (max-width: 768px) {
+        .grid {
+            margin: 0px;
+        }
+    }
 
     </style>
 
