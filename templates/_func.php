@@ -128,6 +128,67 @@ function pageChildren($page = null, $text = null) {
 
 /**
  *
+ * @param Page|PageArray|null $page
+ * @param array $opt 
+ *
+ */
+function catTag($item = null, array $opt) {
+
+if(!count($item->children)) return '';
+// Reset Variables
+    $out = '';
+    $random = '';
+// Heading Text
+    $txt = isset($opt['txt']) ? $opt['txt'] : $item->title;
+// Heading Text
+   if(isset($opt['random']) && $opt['random'] == true) {
+      $random = "sort=random";
+    }
+
+// Limit Items
+    $limit = isset($opt['limit']) ? $opt['limit'] : 12;
+// Class <ul
+    $ul_cl = isset($opt['ul_cl']) ? $opt['ul_cl'] : 'ct-ul';
+// Class <li
+    $li_cl = isset($opt['li_cl']) ? $opt['li_cl'] : 'ct-li';    
+// Basic Class element <a
+    $class = isset($opt['class']) ? $opt['class'] : 'cat-tag-class';
+
+// Show Content
+if(isset($opt['txt_no'])) {
+
+    $out.= $opt['txt_no'];
+
+} else {
+
+    $out .= "<a href='$item->url'><h3>$txt</h3></a>";
+
+}    
+
+    $out .= "<ul class='page-children $item->name $ul_cl'>";
+
+foreach ($item->children("limit=$limit, $random") as $child) {
+
+        $count = count($child->references());
+
+        // If category has reference to pages
+            if($count != 0) {
+
+               $out .= "<li class='$li_cl'>
+                            <a class='$class' 
+                                href='$child->url'>$child->title ( $count ) 
+                            </a>
+                        </li>";
+            }
+        }
+
+    $out .= '</ul>';
+
+    return $out;
+}
+
+/**
+ *
  * @param array $fonts
  *
  */
@@ -305,8 +366,8 @@ function trashDemoData($trash = false) {
             '1030','1031','1032','1033', // About Children
             // '1023', // News
             '1024','1025','1026', // News Children
-            '1016', // Basic Page
-            '1018','1021' // Basic Page Children
+            // '1016', // Basic Page
+            '1018','1021', // Basic Page Children
         ];
             foreach ($arr_p as $key) {
                 $trash_p = pages()->get($key);
