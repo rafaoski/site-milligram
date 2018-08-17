@@ -6,7 +6,7 @@
 #### Essentially, this structure uses minimalist CSS framework [Milligram](https://milligram.io/) and the Flexbox Grid System [Gridlex](https://gridlex.devlint.fr/)
 
 ### How To Install
-1. Download the [zip file](https://github.com/rafaoski/site-milligram/archive/master.zip) at Github or clone directly the repo: ```git clone git@github.com:rafaoski/site-milligram.git```
+1. Download the [zip file](https://github.com/rafaoski/site-milligram/archive/master.zip) at Github or clone directly the repo: ```git clone https://github.com/rafaoski/site-milligram.git```
 2. Extract the folder **site-milligram** into a fresh ProcessWire installation root folder.
 3. During the installation of ProcessWire, choose the profile **"Milligram Mix"**.
 
