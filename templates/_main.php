@@ -62,13 +62,28 @@ wireIncludeFile("inc/_head", // Include header
             </form>
 
             <?php // Show Sidebar 
-               echo page()->sidebar?>
+               echo page()->sidebar;?>
 
             <div id="page-children">
 
-               <?=pageChildren($page);?>
+            <?php 
+            // Show Home page Children
+                echo pageChildren(pages(1));
 
-            </div>
+            // Get Children News
+                echo pageChildren(pages('/news/'), 
+                [ 
+                    'txt' => __('Last News'),
+                    'limit' => 5,
+                    // 'random' => true 
+                ]);
+
+            // Get Children About
+                echo pageChildren(pages('/about/'), 
+                    [ 'txt' => __('About Us') ]);
+            ?>
+
+            </div><!-- /#page-children -->
 
             <?php wireIncludeFile("inc/_c-form", // Include contact form
                [ // Enable contact Form

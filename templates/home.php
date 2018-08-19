@@ -33,9 +33,3 @@ echo wireRenderFile("render/hero", // Render Hero Content
 <?php echo page('body');?>
 
 </div><!-- /#content-body -->
-
-<div id="page-children" pw-append>
-
-<?=pageChildren($pages('/news/'), __('Last News'));?>
-
-</div>
