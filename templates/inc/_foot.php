@@ -75,7 +75,7 @@ window.addEventListener("load", function(){
     echo googleFonts($g_fonts);
 
 // GOGLE ANALYTICS CODE
-    if($ga_code){
+    if(isset($ga_code) && $ga_code != '' ) {
         echo gAnalitycs("$ga_code");
     }
 
