@@ -9,8 +9,7 @@ $children = $item->children("limit=4");?>
       <div class="col-6_sm-12">
 
         <?php // Simple Icon
-            echo icon([
-              'icon'=> 'crosshair', // https://feathericons.com/
+            echo icon('crosshair',[
               'width' => 150,
               'height' => 150,
               'color' => '#608190',
@@ -41,7 +40,7 @@ $children = $item->children("limit=4");?>
 
           <div class="grid">
 
-            <?php // Custom options
+            <?php // Custom Options Icon
               $icons = ['grid','loader','code','layers']; // https://feathericons.com/
               $size = [90,50,90,90];
               $colors = ['#ec6400','#608190','#8a8381','#0074b4'];
@@ -52,8 +51,7 @@ $children = $item->children("limit=4");?>
                   <div class="col-6_sm-12">
 
                     <?php // Get icons inside loop
-                        echo icon([
-                            'icon'=> $icons[$key], // https://feathericons.com/
+                        echo icon($icons[$key],[
                             'width' => $size[$key],
                             'height' => $size[$key],
                             'color' => $colors[$key],
