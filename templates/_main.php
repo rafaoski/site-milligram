@@ -13,7 +13,9 @@ wireIncludeFile("inc/_head", // Include header
     // Get main CSS file
     'app_css' => urls()->templates . "dist/app.css",
     // Enable Open Graph SEO
-    'og_seo' => false
+    'og_seo' => false,
+    // Add Google Webmaster Verification Code https://kb.yoast.com/kb/how-to-connect-your-website-to-google-webmaster-tools/
+    'verification_code' => '' // Paste Your Code
 ]);?>
 
 <!-- MAIN CONTENT -->
