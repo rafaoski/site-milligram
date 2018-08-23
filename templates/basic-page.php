@@ -3,13 +3,13 @@
 // $news = pages()->find("template=basic-page, limit=16"); // Example find with template name
 $news = page()->children('limit=12');
 // If page name is news
-if(page()->name == 'news'):?>
+if(page()->name == page()->opt['news_p']->name):?>
 
 <div id='content-body' class="news grid">
 
 <?php foreach ($news as $child): ?>
 
-  <div class='news-item col-4_md-6_sm-12'>
+  <div class='news-item col-6_sm-12'>
 
     <a href="<?=$child->url?>">
 
@@ -57,6 +57,17 @@ if($page->parent()->name == 'news'):?>
 <?php endif;?>
 
   <?=page()->body?>
+
+<?php if(page()->hasChildren()) {
+
+  echo wireRenderFile("render/child",
+  [ // Enab
+  // Render Grid from this page
+    'items' => page()->children(),
+    'title' => page()->ts['more_pages'],
+  ]);
+
+} ?>
 
 </div><!-- /#content-body -->
 

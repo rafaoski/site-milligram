@@ -9,13 +9,14 @@ $children = $item->children("limit=4");?>
       <div class="col-6_sm-12">
 
         <?php // Simple Icon
-            echo icon('crosshair',[
+            echo icon('crosshair',
+            [
               'width' => 150,
               'height' => 150,
               'color' => '#608190',
               'stroke' => 3,
               'heading' => 'h3',
-              'txt' => __(' PROCESSWIRE WOW!!!'),
+              'txt' => page()->ts['wow'],
               'url' => $item->url
             ]);?>
 
@@ -30,7 +31,7 @@ $children = $item->children("limit=4");?>
 
           <div class="bottom-link">
 
-              <a href="<?=$item->url?>"><?=__('read more');?></a>
+              <a href="<?=$item->url?>"><?=page()->ts['read_m'];?></a>
 
           </div>
 
@@ -40,7 +41,7 @@ $children = $item->children("limit=4");?>
 
           <div class="grid">
 
-            <?php // Custom Options Icon
+            <?php // Custom options
               $icons = ['grid','loader','code','layers']; // https://feathericons.com/
               $size = [90,50,90,90];
               $colors = ['#ec6400','#608190','#8a8381','#0074b4'];
@@ -51,7 +52,8 @@ $children = $item->children("limit=4");?>
                   <div class="col-6_sm-12">
 
                     <?php // Get icons inside loop
-                        echo icon($icons[$key],[
+                        echo icon($icons[$key],
+                        [
                             'width' => $size[$key],
                             'height' => $size[$key],
                             'color' => $colors[$key],
@@ -67,7 +69,7 @@ $children = $item->children("limit=4");?>
             
                       <div class="bottom-link">
 
-                          <a href="<?=$child->url?>"><?=__('read more');?></a>
+                          <a href="<?=$child->url?>"><?=page()->ts['read_m'];?></a>
 
                       </div>
 
