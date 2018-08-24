@@ -39,7 +39,6 @@ page()->opt = [
 // Add Google Webmaster Verification Code https://kb.yoast.com/kb/how-to-connect-your-website-to-google-webmaster-tools/
 'verification_code' => '', // Paste Your Code
 
-
 /**
  * 
  * Contact Form
@@ -54,7 +53,6 @@ page()->opt = [
 'save_message' => false, // Save mesage to pages
 'c_parent' => 'contact', // Contact Page
 'c_item' => 'contact-item', // Template to save message inside body field ( You must create template " contact-item" )
-
 
 /**
  * 
