@@ -6,6 +6,12 @@ page()->opt = [
 // as a convenience, set location of our 3rd party resources (Jquery)
 'jquery' => urls()->set('jquery', 'wire/modules/Jquery/JqueryCore/JqueryCore.js'),
 
+/**
+ * 
+ * Enable Demo Image
+ * 
+ */ 
+'demo_img' => true,
 
 /**
  * 
