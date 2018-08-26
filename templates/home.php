@@ -1,9 +1,9 @@
 <?php namespace ProcessWire;
-
+// Render Hero
 echo wireRenderFile("render/hero",
       [ 
-          'enable' =>  true, // Enable Hero Content
-          'height' => 70, // Height Hero Content
+          'enable' =>  true,
+          'height' => 70, // Height Hero Content ( 70vh full screen - not for mobile screens )
         // Intro
           'intro' =>  page()->title,
           'content' =>  page()->headline,
@@ -14,21 +14,25 @@ echo wireRenderFile("render/hero",
           'b_url' => 'https://processwire.com/',
         // Some Icons
           'icon' => 'github', // https://feathericons.com/
-          'icon_url' => 'https://github.com/processwire'
+          'icon_url' => 'https://github.com/processwire',
+        // id / class  
+          'id' => 'hero',
+          'class' => 'hero-content'
       ]);?>
 
 <div id='content-body'>
 
-<section id='home-grid' class="container-fluid">
+<?php 
+  // Render Grid
+    echo wireRenderFile("render/grid",
+      [ 
+        'enable' =>  true,
+        'item' => page()->opt['about_p'], // Render from About page
+        'id' => 'home-grid',
+        'class' => 'container-fluid'
+      ]);
 
-  <?php echo wireRenderFile("render/grid",
-        [
-          'enable_grid' =>  true,
-          'item' => page()->opt['about_p'] // Render Grid from this page ( About Page )
-        ]);?>
-
-</section><!-- /#home-grid -->
-
-<?php echo page('body');?>
+// body field
+echo page('body');?>
 
 </div><!-- /#content-body -->
