@@ -1,8 +1,8 @@
 <?php namespace ProcessWire;
-// Render Hero Image
-echo wireRenderFile("render/hero", // Render Hero Content
-      [ // Enable Hero Content
-          'enable' =>  true,
+
+echo wireRenderFile("render/hero",
+      [ 
+          'enable' =>  true, // Enable Hero Content
           'height' => 70, // Height Hero Content
         // Intro
           'intro' =>  page()->title,
@@ -22,10 +22,9 @@ echo wireRenderFile("render/hero", // Render Hero Content
 <section id='home-grid' class="container-fluid">
 
   <?php echo wireRenderFile("render/grid",
-        [ // Enable Content Grid
-          'enable_grid' =>  true, // Enable Grid Content
-        // Render Grid from this page
-          'item' => page()->opt['about_p']
+        [
+          'enable_grid' =>  true,
+          'item' => page()->opt['about_p'] // Render Grid from this page ( About Page )
         ]);?>
 
 </section><!-- /#home-grid -->
