@@ -15,6 +15,19 @@ page()->opt = [
 
 /**
  * 
+ * Image Size
+ * 
+ */ 
+'thumbnail' => 180, // ( ./fields/img-thumb )
+
+'small'     => 480, // basic-page.php ( ./fields/img-small )
+
+'medium'    => 640, // basic-page.php ( ./fields/img-medium )
+
+'large'     => 1200, // ./inc/_head.php
+
+/**
+ * 
  * Get Pages ( If you change the names of the pages, you should probably also rewrite those path names )
  * Like ( /news/ ) And the German version ( /nachrichten/ )
  * 
@@ -43,6 +56,9 @@ page()->opt = [
 
 // Enable Open Graph SEO
 'og_seo' => false,
+
+// Site Name
+'s_name' => page()->ts['site_name'],
 
 // Add Google Webmaster Verification Code https://kb.yoast.com/kb/how-to-connect-your-website-to-google-webmaster-tools/
 'verification_code' => '', // Paste Your Code
