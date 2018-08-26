@@ -52,11 +52,6 @@ wireIncludeFile("inc/_link-tag",['home' => $home]);?>
             display: none;
         }
         
-        /* List style for Tags */
-        .page-children.<?=page()->opt['tag_p']->name;?> {
-            list-style: none;
-        }
-
         /* eliminate horizontal scrollbars */
         .grid {
                 margin-right: auto;
