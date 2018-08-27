@@ -1,10 +1,10 @@
 <?php namespace ProcessWire;
 
+// as a convenience, set location of our 3rd party resources (Jquery)
+urls()->set('jquery', 'wire/modules/Jquery/JqueryCore/JqueryCore.js');
+
 // Custom options
 page()->opt = [
-
-// as a convenience, set location of our 3rd party resources (Jquery)
-'jquery' => urls()->set('jquery', 'wire/modules/Jquery/JqueryCore/JqueryCore.js'),
 
 /**
  * 
