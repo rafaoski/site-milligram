@@ -73,9 +73,9 @@ page()->opt = [
 // 'p_url' => pages('/privacy-policy/'), // Privacy Policy
 
 /**
- * 
+ *
  * Options => ( ./_head.php )
- * 
+ *
  */
 // Get Favicon
 'favicon_url' => urls()->templates . "dist/img/favicon.png",
@@ -86,15 +86,22 @@ page()->opt = [
 // Get main CSS file
 'app_css' => urls()->templates . "dist/app.css",
 
-// Enable Open Graph SEO
-'og_seo' => false,
-'og_pref' => ' ' . 'prefix="og: http://ogp.me/ns#"',
-
-// Site Name
-'s_name' => page()->ts['site_name'],
-
 // Add Google Webmaster Verification Code https://kb.yoast.com/kb/how-to-connect-your-website-to-google-webmaster-tools/
 'verification_code' => '', // Paste Your Code
+
+/**
+ *
+ * Enable Open Graph SEO
+ * Enable Simple Twitter Card 
+ * https://cards-dev.twitter.com/validator
+ *
+ */
+'og_seo' => false,
+'og_pref' => ' ' . 'prefix="og: http://ogp.me/ns#"',
+'s_name' => page()->ts['site_name'], // Site Name
+// Twitter Card 
+'enable_tw' => false,
+'large_image' => true,
 
 /**
  * 
