@@ -804,15 +804,16 @@ function trashDemoData($trash = false) {
             // '1016', // Basic Page
             '1018','1021', // Basic Page Children
         ];
-            foreach ($arr_p as $key) {
-                $trash_p = pages()->get($key);
-            // IF PAGE EXSIST
-                if($trash_p->name == true) {
-            // PAGE TO TRASH
-                    pages()->trash($trash_p);
-                // OR DELETE
-                    // pages()->delete($trash_p);
-                }
+    // Add pages to trash  
+        foreach ($arr_p as $key) {
+            $trash_p = pages()->get($key);
+        // IF PAGE EXSIST
+            if($trash_p->name == true) {
+        // PAGE TO TRASH
+                pages()->trash($trash_p);
+            // OR DELETE
+                // pages()->delete($trash_p);
             }
         }
     }
+}
