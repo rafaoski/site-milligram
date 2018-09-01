@@ -1,12 +1,6 @@
-<?php namespace ProcessWire; 
-// _main.php template file, called after a page’s template file
+<?php namespace ProcessWire; // _main.php template file, called after a page’s template file
 // trashDemoData('false'); // Put unnecessary pages into the trash ( change to true ) !!!
-
-// Get Homepage
-$home = page()->opt['home']; 
-
-// ( Include header ) https://processwire.com/blog/posts/processwire-2.5.2/
-wireIncludeFile("inc/_head", ['home' => $home]);?>
+wireIncludeFile("inc/_head"); // ( Include header )?>
 
 <!-- MAIN CONTENT -->
 <main id='main' class='container-medium'>
@@ -39,12 +33,8 @@ wireIncludeFile("inc/_head", ['home' => $home]);?>
         <!-- SIDEBAR -->
         <aside id='sidebar' class='col sid'>
 
-            <?php // Include Multi Language Menu
-                wireIncludeFile("inc/_lang-menu",
-                    [ // Get Homepage
-                        'home' => $home,
-                        'menu_class' => 'lang-menu grid' // <ul class='lang-menu grid'
-                    ]);?>
+            <?php // Language Menu 
+                echo langMenu($page,pages('/'))?>
 
             <!-- SEARCH FORM  -->
             <form id='search' class='s-form' action='<?=pages()->get('template=search')->url?>' method='get'>
@@ -54,32 +44,19 @@ wireIncludeFile("inc/_head", ['home' => $home]);?>
             </form>
 
             <?php // Show Sidebar 
-               echo page()->sidebar?>
+            echo page()->sidebar?>
 
             <div id="page-children">
 
             <?php 
-                // Show Home page Children
-                    echo pageChildren(pages(1));
-
-                // Get Children News
-                    echo pageChildren(page()->opt['news_p'], 
-                    [ 
-                        'txt' => page()->ts['last_news'],
-                        'limit' => 5,
-                        // 'random' => true 
-                    ]);
-
-                // Get Children About
-                    echo pageChildren(page()->opt['about_p'], 
-                        [ 'txt' => page()->ts['about_us'] ]);
-            ?>
+            // Include sidebar links
+            wireIncludeFile('inc/_links');?>
 
             </div><!-- /#page-children -->
 
             <?php
             // Include contact form
-                wireIncludeFile("inc/_c-form");?>
+            wireIncludeFile("inc/_c-form");?>
 
         </aside><!-- /#sidebar -->
 

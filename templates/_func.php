@@ -73,6 +73,76 @@ $out .= "</div><!-- /.b-container -->";
 
 /**
  *
+ * @param Page $root
+ * @param Page $page
+ *
+ */
+function linkTag($root,$page) {
+
+    // If Multi Language Modules activate
+    if(!$page->getLanguages()) return '';
+  
+    $out = '';
+    // handle output of 'hreflang' link tags for multi-language
+    // this is good to do for SEO in helping search engines understand
+    // what languages your site is presented in
+    foreach(languages() as $language) {
+        // if this page is not viewable in the language, skip it
+        if(!$page->viewable($language)) continue;
+        // get the http URL for this page in the given language
+        $url = $page->localHttpUrl($language);
+        // hreflang code for language uses language name from homepage
+        $hreflang = $root->getLanguageValue($language, 'name');
+  
+        // if($hreflang == 'home') $hreflang = page()->ts['lang_code'];
+  
+        // output the <link> tag: note that this assumes your language names are the same as required by hreflang.
+        $out .= "\t<link rel='alternate' hreflang='$hreflang' href='$url' />\n";
+    }
+    return $out;
+  }
+  
+  /**
+   *
+   * @param Page $item
+   * @param Page $root
+   *
+   */
+  function langMenu($page, $root) {
+    // If Enable Multilanguage Modules
+    if(!page()->getLanguages()) return '';
+    $out = '';
+    // language switcher / navigation
+    $out .= "<ul class='lang-menu grid' role='navigation'>";
+    // Start Loop
+    foreach(languages() as $language) {
+  
+    // is page viewable in this language?
+        if(!$page->viewable($language)) continue;
+  
+        if($language->id == user()->language->id) {
+  
+            $out .= "<li class='active'>";
+  
+        } else {
+  
+            $out .= "<li>";
+  
+        }
+  
+        $url = $page->localUrl($language);
+        $hreflang = $root->getLanguageValue($language, 'name');
+        $out .= "<a hreflang='$hreflang' href='$url'>$language->title</a></li>";
+  
+    }
+  
+    $out .= "</ul>";
+  
+    return $out;
+  }
+
+/**
+ *
  * @param Page|PageArray|null $page
  *
  */

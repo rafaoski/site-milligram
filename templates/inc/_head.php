@@ -9,8 +9,8 @@
 	<meta name="description" content="<?=page()->summary;?>">
 <?php // Smart Seo
 echo smartSeo(page());
-// Include Lang tag 
-wireIncludeFile("inc/_link-tag",['home' => $home]);?>
+// Lang tag
+echo linkTag(pages('/'),$page);?>
 
     <!-- BASIC STYLESHEET -->
     <link rel="stylesheet" href="<?=page()->opt['app_css'];?>"/>
@@ -41,7 +41,7 @@ wireIncludeFile("inc/_link-tag",['home' => $home]);?>
 	<nav id='main-menu' class='grid container-medium'>
 
      <?php  // Some Options
-        echo burgerNav($home,
+        echo burgerNav(pages('/'),
          [  
             'logo_url' => page()->opt['logo_url'],
 		 // Show Site Name if logo_url is uncomment
