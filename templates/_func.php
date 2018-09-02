@@ -52,11 +52,11 @@ $out .= "<!-- Burger-Icon -->
           <div class='b-bun b-bun--bottom'></div>
         </div>";
 
-if(isset($opt['logo_url'])) {
+if(isset($opt['logoUrl'])) {
     $alt = isset($opt['alt']) ? $opt['alt'] : '';
     $out .="<!-- Burger-Logo -->
     <a class='logo' href='{$root->httpUrl}'>
-        <img src='{$opt['logo_url']}'
+        <img src='{$opt['logoUrl']}'
         alt='{$alt}'
         width='91' height='49'/>
     </a>";
@@ -186,7 +186,7 @@ $out = '';
 $random = '';
 
 // Default Text
-    $txt = isset($opt['txt']) ? $opt['txt'] : page()->ts['more_pages'];
+    $txt = isset($opt['txt']) ? $opt['txt'] : page()->ts['morePages'];
 
 // Limit Items
     $limit = isset($opt['limit']) ? $opt['limit'] : 8;
@@ -221,7 +221,7 @@ if(isset($opt['random']) && $opt['random'] == true) {
 function smartSeo($page) {
 
 // Check if Smart Seo is enabled
-if(!page()->opt['smart_seo']) return '';
+if(!page()->opt['smartSeo']) return '';
 
 // Reset variables
 $out = ''; 
@@ -235,8 +235,8 @@ if(config()->pagerHeadTags) echo "\t" . config()->pagerHeadTags . "\n";
 // https://processwire.com/blog/posts/processwire-2.6.18-updates-pagination-and-seo/#using-a-pagination-view-all-page
 // specify scheme and host statically rather than from $page->httpUrl
 // $canonicalURL = 'https://www.domain.com' . $page->url;
-if(page()->opt['cannonical_url']) {
-    $canonicalURL = page()->opt['cannonical_url'] . $page->url;
+if(page()->opt['cannonicalUrl']) {
+    $canonicalURL = page()->opt['cannonicalUrl'] . $page->url;
 } else {
     $canonicalURL = $page->httpUrl;
 }
@@ -247,13 +247,13 @@ if(input()->pageNum > 1) {
 }
          
 // Get locale
-    $locale = page()->opt['locale'];
+    $locale = page()->ts['locale'];
         $out .= "\t<meta property='og:locale' content='{$locale}'/>\n";
         $out .= "\t<meta id='og-title' property='og:title' content='{$page('headline|title')}'/>\n";
         $out .= "\t<meta id='og-desc' property='og:description' content='{$page->summary}'>\n";
         $out .= "\t<meta id='og-type' property='og:type' content='website'/>\n";
         $out .= "\t<meta id='og-url' property='og:url' content='{$canonicalURL}'/>\n";
-        $out .= "\t<meta property='og:site_name' content='{$page->opt['s_name']}'/>\n";
+        $out .= "\t<meta property='og:site_name' content='{$page->ts['siteName']}'/>\n";
 
 // If Page Images
     if( $page->images && count($page->images) ) {
@@ -272,9 +272,9 @@ if(input()->pageNum > 1) {
     }
 
 // Simple Twitter Card 
-    if(page()->opt['enable_tw']) {
+    if(page()->opt['enableTwitter']) {
     
-        $tw_summary = page()->opt['large_image'] ? 'summary_large_image' : 'summary';
+        $tw_summary = page()->opt['largeImage'] ? 'summary_largeImage' : 'summary';
 
         $out .= "\t<meta name='twitter:card' content='{$tw_summary}'/>\n";
         $out .= "\t<meta name='twitter:title' content='{$page('headline|title')}'/>\n";
@@ -370,90 +370,6 @@ if($icon == null) return '';
 
         }
     
-    return $out;
-}
-
-/**
- * 
- * Example usage
- * ~~
- * echo catTag(pages('/categories/'), 
- *   [
- *     'txt' => __('Categories'),
- *      //  'txt_clear' => true, // Show Only Text without <a href''><h3></h3></a>
- *     'ul_cl' => 'element-ul-class',
- *     'li_cl' => 'element-li-class',
- *     'class' => 'element-a-class',
- *     'limit' => 6, // Limit items
- *     'random' => false, // Sort Random
- *     'dis_count' => false
- *   ]);
- * 
- * @param Page|null $item
- * @param array|null $opt 
- *
- */
-function catTag($item = null, $opt = null) {
-
-// Do not show if the items do not exist
-if(!count($item->children)) return '';
-
-// Do not show if the page is the same as item
-if(wire('page')->id == $item->id) return '';
-
-// Reset Variables
-    $out = '';
-    $random = '';
-// Heading Text
-    $txt = isset($opt['txt']) ? $opt['txt'] : $item->title;
-// Random Items
-   if(isset($opt['random']) && $opt['random'] == true) {
-      $random = "sort=random";
-    }
-
-// Limit Items
-    $limit = isset($opt['limit']) ? $opt['limit'] : 12;
-// Class <ul
-    $ul_cl = isset($opt['ul_cl']) ? $opt['ul_cl'] : 'ct-ul';
-// Class <li
-    $li_cl = isset($opt['li_cl']) ? $opt['li_cl'] : 'ct-li';    
-// Basic Class element <a
-    $class = isset($opt['class']) ? $opt['class'] : 'cat-tag-class';
-
-// Show Content
-if(isset($opt['txt_clear'])) {
-
-    $out.= $opt['txt'];
-
-} else {
-
-    $out .= "<a href='$item->url'><h3>$txt</h3></a>";
-
-}    
-
-    $out .= "<ul class='page-children $item->name $ul_cl'>";
-
-foreach ($item->children("limit=$limit, $random, start=0") as $child) {
-
-    $count =  count( $child->references() );
-
-    $c_txt = '( ' . count( $child->references() ) . ' )';
-
-    if( isset($opt['dis_count']) && $opt['dis_count'] == true ) $c_txt = '';
-
-        // If category has reference to pages
-            if($count != 0) {
-
-               $out .= "<li class='$li_cl'>
-                            <a class='$class' 
-                                href='$child->url'>$child->title $c_txt  
-                            </a>
-                        </li>";
-            }
-        }
-
-    $out .= '</ul>';
-
     return $out;
 }
 
@@ -709,81 +625,6 @@ $out .= '</div>';
     return $out;
 }
 
-/**
- * 
- * Comments + Pagination
- * @param Page $page
- * @param int $limit
- *
- */
-function blogComments($page, $limit = 12) {
-
-if (!$page->comments) return ''; 
-
-// Translatable Strings
-$cite = page()->ts['cite'];
-$email = page()->ts['email'];
-$text = page()->ts['text'];
-$submit = page()->ts['submit'];
-$comments_l = page()->ts['comments_l'];
-$added = page()->ts['added'];
-$in_day = page()->ts['in_day'];
-$reply = page()->ts['reply'];
-$join = page()->ts['join'];
-$approved = page()->ts['approved'];
-$thanks = page()->ts['thanks'];
-$errors = page()->ts['errors'];
-$prev = page()->ts['prev_comments'];
-$next = page()->ts['next_comments'];
-
-$comm = '';
-
-    $start = (input()->pageNum - 1) * $limit;
-    $comments = $page->comments->slice($start, $limit);
-
-    $comm .= $comments->render(array(
-     'headline' => "<h3>" . $comments_l . "</h3>",
-     'commentHeader' => $added . '{cite}' . $in_day . ' {created} {stars} {votes}',
-     'dateFormat' => 'm/d/y - H:i',
-     'encoding' => 'UTF-8',
-    //  'admin' => false, // shows unapproved comments if true
-     'replyLabel' => $reply,
-   ));
-
-   $comm .= $page->comments->renderForm(array(
-     'headline' => '<h2>' . $join . '</h2>',
-     'pendingMessage' => $approved,
-     'successMessage' => $thanks,
-     'errorMessage' => $errors,
-     'attrs' => array(
-     'id' => 'CommentForm',
-     'action' => './',
-     'method' => 'post',
-     'class' => 'comm-form c-form',
-     'rows' => 5,
-     'cols' => 50,
-     ),
-     'labels' => array(
-             'cite' => $cite,
-             'email' => $email,
-             'text' => $text ,
-             'submit' => $submit,
-         ),
-     ));
-
-     $comm .= "<p class='link-pagination'>";
-
-        if(input()->pageNum > 1) {
-        $comm .= "<a class='btn m-1' href='./page" . (input()->pageNum - 1) . "'>" .  $prev . "</a>";
-        }
-        if($start + $limit < count(page()->comments)) {
-        $comm .= "<a class='btn m-1'  href='./page" . (input()->pageNum + 1) . "'>" . $next . "</a>";
-        }
-        $comm .= "</p>";
-
-return $comm;
-
-}
 
 /**
  * 

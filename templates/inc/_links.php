@@ -8,15 +8,15 @@ echo pageChildren(pages(1),
 );
 
 // Get Children News
-echo pageChildren(page()->opt['news_p'], 
+echo pageChildren(page()->opt['newsPage'], 
 [ 
-    'txt' => page()->ts['last_news'],
+    'txt' => page()->ts['lastNews'],
     'limit' => 5,
     // 'random' => true 
 ]);
 
 // Get Children About
-echo pageChildren(page()->opt['about_p'], 
+echo pageChildren(page()->opt['aboutPage'], 
 [ 
-    'txt' => page()->ts['about_us'] 
+    'txt' => page()->ts['aboutUs'] 
 ]);

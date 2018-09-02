@@ -8,16 +8,16 @@
 
         <small class='small'>&copy; <?=date('Y')?> &bull;</small>
 
-        <a href='https://processwire.com'><?=page()->ts['powered_by'];?></a>
+        <a href='https://processwire.com'><?=page()->ts['poweredBy'];?></a>
 
     </p><!-- /#copyright -->
 
-<?php if(page()->opt['soc_p']):?>
+<?php if(page()->opt['socialProfile']):?>
 
     <p id="social" class='socila-profiles col-7_md-6_sm-12'>
 
-        <?php foreach (page()->opt['soc_p'] as $icon => $value) {
-                
+        <?php foreach (page()->opt['socialProfile'] as $icon => $value) {
+
         echo icon($icon, // Feather Icons
             [
                 'url'=> $value,
@@ -26,7 +26,7 @@
                 'height' => 35,
                 'stroke' => 2,
                 'color' => '#9b4dca'
-            ]); 
+            ]);
         }?>
 
     </p><!-- /#social -->
@@ -39,7 +39,7 @@
 
     <a class='button edit-btn' href='<?=page()->editUrl?>'>
 
-           <?=page()->ts['edit_page'];?>
+           <?=page()->ts['editPage'];?>
 
     </a>
 
@@ -55,7 +55,7 @@
 
 <?php // End Config Debug
     endif; ?>
-    
+
 <!-- Main Scripts -->
 <script defer src="<?=urls()->templates?>dist/main.js"></script>
 
@@ -79,26 +79,20 @@ window.addEventListener("load", function(){
 </script>
 
 <?php // Get Some Google Fonts https://github.com/typekit/webfontloader
-    echo googleFonts(page()->opt['g_fonts']);
-
+echo googleFonts(page()->opt['googleFonts']);
 // GOGLE ANALYTICS CODE
-if(page()->opt['ga_code']) {
-
-    echo gAnalitycs(page()->opt['ga_code']);
-
+if(page()->opt['gaCode']) {
+echo gAnalitycs(page()->opt['gaCode']);
 }
-
 // Privacy Banner
-if(page()->opt['p_b']) {
-
+if(page()->opt['enablePrivacy']) {
 echo cookieBanner(
     [
-       'message' => page()->ts['p_message'],
-       'dismiss' => page()->ts['go_it'],
-       'link' => page()->ts['learn_more'],
-       'href' => page()->opt['p_url']
+       'message' => page()->ts['privacyMessage'],
+       'dismiss' => page()->ts['goIt'],
+       'link' => page()->ts['learnMore'],
+       'href' => page()->opt['privacyUrl']
     ]);
-
 } ?>
 
 </body>

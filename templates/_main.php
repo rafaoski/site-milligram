@@ -55,14 +55,14 @@ wireIncludeFile("inc/_head"); // ( Include header )?>
             </div><!-- /#page-children -->
 
             <?php // Include contact form
-            wireIncludeFile("inc/_c-form",
-            [   'enable' => page()->opt['enable_cf'], // Enable or Disable => true or false 
-                'mailTo' => page()->opt['mail_to'], // Send To Mail
-                'mailSubject' => page()->ts['m_subj'], // Mail Subject
-                'saveMessage' => page()->opt['save_message'], // true or false
-                'contactPage' => page()->opt['c_page'], // Get Contact Page to save items pages('/contact/')
-                'contactItem' => page()->opt['c_item'], // Template to create item ( It must have a body field )
-            ]);?>
+             wireIncludeFile("inc/_c-form",
+             [   'enable' => page()->opt['enableMail'], // Enable or Disable => true or false 
+                 'mailTo' => page()->opt['mailTo'], // Send To Mail
+                 'mailSubject' => page()->ts['mailSubject'], // Mail Subject
+                 'saveMessage' => page()->opt['saveMesage'], // true or false
+                 'contactPage' => page()->opt['contactPage'], // Get Contact Page to save items pages('/contact/')
+                 'contactItem' => page()->opt['contactItem'], // Template to create item ( It must have a body field )
+             ]);?>
 
         </aside><!-- /#sidebar -->
 
