@@ -17,9 +17,9 @@
 
 /** @var ProcessWire $wire */
 
-include_once('./_translate.php');
-
 include_once('./_options.php');
+
+include_once('./_translate.php');
 
 include_once('./_func.php');
 

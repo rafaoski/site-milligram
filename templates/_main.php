@@ -1,6 +1,8 @@
 <?php namespace ProcessWire; // _main.php template file, called after a page’s template file
 // trashDemoData('false'); // Put unnecessary pages into the trash ( change to true ) !!!
-wireIncludeFile("inc/_head"); // ( Include header )?>
+$pageOptions = page()->opt['optionsPage']; // Get options page
+$contactPage = page()->opt['contactPage']; // Get contact page
+wireIncludeFile("inc/_head",['options' => $pageOptions]); // ( Include header )?>
 
 <!-- MAIN CONTENT -->
 <main id='main' class='container-medium'>
@@ -44,25 +46,20 @@ wireIncludeFile("inc/_head"); // ( Include header )?>
             </form>
 
             <?php // Show Sidebar 
-            echo page()->sidebar?>
-
-            <div id="page-children">
-
-            <?php 
-            // Include sidebar links
-            wireIncludeFile('inc/_links');?>
-
-            </div><!-- /#page-children -->
-
-            <?php // Include contact form
-             wireIncludeFile("inc/_c-form",
-             [   'enable' => page()->opt['enableMail'], // Enable or Disable => true or false 
-                 'mailTo' => page()->opt['mailTo'], // Send To Mail
-                 'mailSubject' => page()->ts['mailSubject'], // Mail Subject
-                 'saveMessage' => page()->opt['saveMesage'], // true or false
-                 'contactPage' => page()->opt['contactPage'], // Get Contact Page to save items pages('/contact/')
-                 'contactItem' => page()->opt['contactItem'], // Template to create item ( It must have a body field )
-             ]);?>
+                echo page()->sidebar;
+                // Include contact form
+                wireIncludeFile("inc/_c-form",
+                [   'enable' => true, // Enable or Disable => true or false 
+                    'saveMessage' => true, // true or false
+                    'contactPage' => $contactPage, // Get Contact Page to save items pages('/contact/')
+                    'contactItem' => 'contact-item', // Template to create item ( It must have a body field )
+                    'mailTo' => $contactPage->email ?: 'user@gmail.com', // Send To Mail
+                    // 'contactMail' => $contactPage->email ?: 'user@gmail.com', // Send To Mail ( Bottom Form )
+                    // 'phoneNumber' => $contactPage->txt_1 ?: '55-22-36', // Phone Number
+                    'mailSubject' => page()->ts['mailSubject'], // Mail Subject
+                ]);
+                // Include sidebar links
+                wireIncludeFile('inc/_links');?>
 
         </aside><!-- /#sidebar -->
 
@@ -70,5 +67,4 @@ wireIncludeFile("inc/_head"); // ( Include header )?>
 
 </main>
 
-<?php // ( Include footer ) https://processwire.com/blog/posts/processwire-2.5.2/
-    wireIncludeFile("inc/_foot"); // Include Footer
+<?php wireIncludeFile("inc/_foot",['options' => $pageOptions]); // ( Include footer )

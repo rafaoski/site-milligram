@@ -38,16 +38,22 @@ page()->opt = [
 
 'aboutPage' => pages('/about/'), // Get About Page
 
+'contactPage' => pages('/contact/'), // Contact Page
+
+'privacyPage' => pages('/privacy-policy/'), // Privacy Page
+
+'optionsPage' => pages('/options/'), // Options Page
+
 /**
  *
- * Options => ( ./_head.php )
+ * Options Header => ( ./_head.php )
  *
  */
-// Get Favicon
-'faviconUrl' => urls()->templates . "dist/img/favicon.png",
-
 // Logo url
 'logoUrl' => urls()->templates . "dist/img/logo.png",
+
+// Get Favicon
+'faviconUrl' => urls()->templates . "dist/img/favicon.png",
 
 // Get main CSS file
 'appCss' => urls()->templates . "dist/app.css",
@@ -70,40 +76,11 @@ page()->opt = [
 
 /**
  *
- * Options => Contact Form ( ./inc/_c-form.php )
+ * Options Footer => ( ./_foot.php )
  *
  */
-'enableMail' => false, // Enable contact Form
-'mailTo' => 'yourmail@gmail.com', // Email to send message
-// More Info
-'contactPhone' => '6755464', // Info Phone
-'contactMail' => 'processwire@gmail.com', // Info E-Mail
-// Save Message
-'saveMesage' => false, // Save mesage to pages
-'contactPage' => pages('/contact/'), // Get Contact Page ( You must create contact Page " Contact " )
-'contactItem' => 'contact-item', // Template to save message ( You must create template " contact-item " with body field )
-
-/**
- *
- * Options Footer => ( ./inc/_foot.php )
- *
- */
-'socialProfile' =>  // Social Profiles ( Icons => https://feathericons.com/ )
-[
- 'twitter' => 'https://twitter.com/processwire',
- 'facebook' => 'https://pl-pl.facebook.com/processwire/',
- 'activity' => 'https://weekly.pw/',
- 'youtube' => 'https://www.youtube.com/user/ryancramerdesign/videos',
- 'github' => 'https://github.com/processwire/processwire'
-],
-
 // Add Google Fonts
 'googleFonts' => ['Roboto','Montserrat','Righteous'],
-
-// Privacy Banner // https://cookieconsent.insites.com/
-'enablePrivacy' => false, // Enable Privacy Banner
-'privacyUrl' => pages()->get('/')->httpUrl . 'privacy-policy/', // Cookie Page ( You Must Create Privacy Policy page )
-// 'privacyUrl' => pages('/privacy-policy/')->url, // Privacy Policy Url ( If you created )
 
 // Google Analytics Code
 'gaCode' => '', // To Enable put Google Analytics Code
