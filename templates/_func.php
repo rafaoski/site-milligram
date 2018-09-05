@@ -94,7 +94,7 @@ function linkTag($root,$page) {
         // hreflang code for language uses language name from homepage
         $hreflang = $root->getLanguageValue($language, 'name');
   
-        // if($hreflang == 'home') $hreflang = page()->ts['lang_code'];
+        // if($hreflang == 'home') $hreflang = page()->ts['languageCode'];
   
         // output the <link> tag: note that this assumes your language names are the same as required by hreflang.
         $out .= "\t<link rel='alternate' hreflang='$hreflang' href='$url' />\n";
