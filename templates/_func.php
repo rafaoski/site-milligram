@@ -212,6 +212,26 @@ if(isset($opt['random']) && $opt['random'] == true) {
 }
 
 /**
+ *
+ * @param Page $page
+ * // All Sizes 'thumb','small','medium','large', 'full'(default) 
+ * @param string $size
+ *
+ */
+function getImage($page, $size = 'full') {
+    // View a replacement image from https://picsum.photos/
+    if(page()->opt['demoImage']) {
+    
+      return imgDemo($page);
+    
+    } else {
+    
+      return $page->render('images', "img-$size");
+      
+    }
+}
+
+/**
  * 
  * Smart SEO
  * 

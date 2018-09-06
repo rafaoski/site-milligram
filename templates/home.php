@@ -1,8 +1,7 @@
 <?php namespace ProcessWire;
 // Render Hero
 echo wireRenderFile("render/hero",
-      [ 
-          'enable' =>  true,
+      [
           'height' => 70, // Height Hero Content ( 70vh full screen - not for mobile screens )
         // Intro
           'intro' =>  page()->title,
@@ -26,8 +25,7 @@ echo wireRenderFile("render/hero",
 <?php 
   // Render Grid
     echo wireRenderFile("render/grid",
-      [ 
-        'enable' =>  true,
+      [
         'item' => page()->opt['aboutPage'], // Render from About page
         'id' => 'home-grid',
         'class' => 'container-fluid'
