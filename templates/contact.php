@@ -1,19 +1,20 @@
 <?php namespace ProcessWire;
-$contactPage = page()->opt['contactPage']; // Get contact page?>
+// Get contact page
+$contactPage = page()->opt['contactPage'];?>
 
 <!-- CONTENT BODY -->
 <div id='content-body'>
 
 <?php // Include contact form
-        wireIncludeFile("inc/_c-form",
-        [   'saveMessage' => true, // true or false
-            'contactPage' => $contactPage, // Get Contact Page to save items pages('/contact/')
-            'contactItem' => 'contact-item', // Template to create item ( It must have a body field )
-            'mailTo' => $contactPage->email ?: 'user@gmail.com', // Send To Mail
-            'contactMail' => $contactPage->email ?: 'user@gmail.com', // Send To Mail ( Bottom Form )
-            'phoneNumber' => $contactPage->txt_1 ?: '55-22-36', // Phone Number
-            'mailSubject' => page()->ts['mailSubject'], // Mail Subject
-        ]);
+wireIncludeFile("inc/_c-form",
+[   'saveMessage' => true, // true or false
+    'contactPage' => $contactPage, // Get Contact Page to save items pages('/contact/')
+    'contactItem' => 'contact-item', // Template to create item ( It must have a body field )
+    'mailTo' => $contactPage->email ?: 'user@gmail.com', // Send To Mail
+    'contactMail' => $contactPage->email ?: 'user@gmail.com', // Send To Mail ( Bottom Form )
+    'phoneNumber' => $contactPage->txt_1 ?: '55-22-36', // Phone Number
+    'mailSubject' => page()->ts['mailSubject'], // Mail Subject
+]);
         
 // If sidebar
 if(page()->sidebar):?>
@@ -35,10 +36,8 @@ echo page()->body;?>
 <!-- SIDEBAR -->
 <aside id='sidebar'>
 
-    <?php 
-    // Include sidebar links
-        wireIncludeFile('inc/_links');
-    ?>
+<?php // Include sidebar links
+wireIncludeFile('inc/_links');?>
 
 </aside>
 

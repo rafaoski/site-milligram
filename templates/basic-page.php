@@ -1,6 +1,5 @@
 <?php namespace ProcessWire;
-// $news = pages()->find("parent.name=news, limit=16"); // Example find with name parent page
-// $news = pages()->find("template=basic-page, limit=16"); // Example find with template name
+// Get Name News Page from ( _options.php )
 $newsPage = page()->opt['newsPage']->name?>
 
 <div id='content-body' class="<?=page()->name == $newsPage ? 'news grid' : 'basic-page';?>">
