@@ -1,7 +1,7 @@
 <?php namespace ProcessWire;
 // Render Hero
 echo wireRenderFile("render/hero",
-      [
+      [ 
           'height' => 70, // Height Hero Content ( 70vh full screen - not for mobile screens )
         // Intro
           'intro' =>  page()->title,
@@ -10,15 +10,13 @@ echo wireRenderFile("render/hero",
           'heroTxtFirst' => page()->ts['heroTxtFirst'], 
           'heroTxtNext' => page()->ts['heroTxtNext'], 
           'heroTxtLast' => page()->ts['heroTxtLast'], 
-          'heroUrl' => 'https://processwire.com/',
         // Some Icons
           'icon' => 'github', // https://feathericons.com/
-          'iconUrl' => 'https://github.com/processwire',
+          'iconUrl' => 'https://github.com/processwire/processwire/',
         // id / class  
           'id' => 'hero',
           'class' => 'hero-content'
       ]);?>
-
 
 <div id='content-body'>
 
