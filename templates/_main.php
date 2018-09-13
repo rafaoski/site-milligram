@@ -1,7 +1,6 @@
 <?php namespace ProcessWire; // _main.php template file, called after a page’s template file
 // trashDemoData('false'); // Put unnecessary pages into the trash ( change to true ) !!!
 $optionsPage = page()->opt['optionsPage']; // Get options page
-$contactPage = page()->opt['contactPage']; // Get contact page
 wireIncludeFile("inc/_head",['options' => $optionsPage]); // ( Include header )?>
 
 <!-- MAIN CONTENT -->
@@ -12,7 +11,7 @@ wireIncludeFile("inc/_head",['options' => $optionsPage]); // ( Include header )?
         <!-- CONTENT -->
         <div id='content' class='col-9_md-12 c-page'>
 
-        <?php if(page()->template != 'home'):?>
+           <?php if(page()->template != 'home'):?>
 
             <!-- HEADING -->
             <h1 id='content-head'>
@@ -21,7 +20,7 @@ wireIncludeFile("inc/_head",['options' => $optionsPage]); // ( Include header )?
 
             </h1>
 
-        <?php endif; ?>
+           <?php endif; ?>
 
             <!-- CONTENT BODY -->
             <div id='content-body' class='c-body'>
@@ -35,8 +34,7 @@ wireIncludeFile("inc/_head",['options' => $optionsPage]); // ( Include header )?
         <!-- SIDEBAR -->
         <aside id='sidebar' class='col sid'>
 
-            <?php // Language Menu 
-                echo langMenu($page,pages('/'))?>
+            <?=langMenu($page,pages('/'))?>
 
             <!-- SEARCH FORM  -->
             <form id='search' class='s-form' action='<?=pages()->get('template=search')->url?>' method='get'>
@@ -45,18 +43,15 @@ wireIncludeFile("inc/_head",['options' => $optionsPage]); // ( Include header )?
 
             </form>
 
-            <?php // Show Sidebar 
-                echo page()->sidebar;
-                // Include contact form
-                wireIncludeFile("inc/_c-form",
-                [   'saveMessage' => true, // true or false
-                    'contactPage' => $contactPage, // Get Contact Page to save items pages('/contact/')
-                    'contactItem' => 'contact-item', // Template to create item ( It must have a body field )
-                    'mailTo' => $contactPage->email ?: 'user@gmail.com', // Send To Mail
-                    'mailSubject' => page()->ts['mailSubject'], // Mail Subject
-                ]);
-                // Include sidebar links
-                wireIncludeFile('inc/_links');?>
+        <?php if(page()->sidebar): ?>
+
+            <div id="content-sidebar">
+
+               <?=page()->sidebar;?>
+
+            </div><!-- /#content-sidebar -->
+
+        <?php endif; ?>
 
         </aside><!-- /#sidebar -->
 

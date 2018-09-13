@@ -8,8 +8,7 @@ $newsPage = page()->opt['newsPage']->name?>
 if(page()->name == $newsPage) {
 
 echo wireRenderFile("render/child",
-[
-  'items' => $page->children("limit=12"),
+[ 'items' => $page->children("limit=12"),
   'class' => 'news-item col-6_sm-12'
 ]);
 
@@ -27,8 +26,7 @@ if( page()->parent == page()->opt['newsPage'] ) {
 echo page()->body;
 
 echo wireRenderFile("render/child",
-[
-  'items' => $page->children("limit=12"),
+[ 'items' => $page->children("limit=12"),
   'container_class' => 'grid',
   'class' => 'col-4_sm-12',
   'more' => page()->ts['morePages']
@@ -37,3 +35,16 @@ echo wireRenderFile("render/child",
 }?>
 
 </div><!-- /#content-body -->
+
+<aside id="sidebar" pw-append>
+
+<?php // Show Home page Children
+    echo pageChildren(pages(1),
+    [
+        'limit'=> 12,
+    //  'random' => true
+    ]
+);
+?>
+
+</aside>
