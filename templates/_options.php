@@ -38,10 +38,10 @@ page()->opt = [
 'optionsPage' => pages('/options/'), // Options Page
 
 /**
- * 
+ *
  * Get Pages ( If you change the names of the pages, you should probably also rewrite those path names )
  * Like ( /news/ ) And the German version ( /nachrichten/ )
- * 
+ *
  */
 'home' => pages()->get('/'), // Get Home Page
 
@@ -73,14 +73,14 @@ page()->opt = [
 /**
  *
  * Smart SEO
- * Twitter Card 
+ * Twitter Card
  * https://cards-dev.twitter.com/validator
  *
  */
 'smartSeo' => true, // Enable SEO
 'cannonicalUrl' => '', // https://www.domain.com
-// Twitter Card 
-'enableTwitter' => true, // Enable Twitter Card 
+// Twitter Card
+'enableTwitter' => true, // Enable Twitter Card
 'largeImage' => true,
 
 /**

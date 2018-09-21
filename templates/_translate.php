@@ -11,7 +11,7 @@ page()->ts = [
 'siteName' => page()->opt['optionsPage']->headline ?: __('Your Site Name'),
 'logoAlt' => __('Show My Awesome Logo'),
 
-// Last News 
+// Last News
 'lastNews' => __('Last News'),
 
 // About US
