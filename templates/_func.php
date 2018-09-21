@@ -109,7 +109,7 @@ function linkTag($root, $page)
   
   /**
    *
-   * @param Page $item
+   * @param Page $page
    * @param Page $root
    *
    */
